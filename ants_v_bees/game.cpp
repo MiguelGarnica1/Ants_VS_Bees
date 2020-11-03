@@ -115,3 +115,56 @@ int game::checkBeeCount() {
 
 	return beeCount;
 }
+
+int game::menu() {
+    cout << "\n1. End turn" << endl;
+    cout << "2. Place ant." << endl;
+    cout << "Hit Enter to confirm selection. Select:";
+
+    string choice;
+    getline(cin, choice);
+    int option = stoi(choice);
+    while (option < 1 || option > 2) {
+        cout << "\nBad input, try again.";
+        getline(cin, choice);
+        option = stoi(choice);
+    }
+
+    return option;
+}
+
+int game::placeAnt() {
+    cout << "\nPlacing ant. Which ant?" << endl;
+    cout << "1. Harvester       5. Short Thrower" << endl;
+    cout << "2. Thrower         6. Wall" << endl;
+    cout << "3. Fire            7. Ninja" << endl;
+    cout << "4. Long Thrower    8. Bodyguard" << endl;
+    cout << "Hit Enter to confirm selection. Select:";
+
+    string choice;
+    getline(cin, choice);
+    int option = stoi(choice);
+    while (option < 1 || option > 8) {
+        cout << "\nBad input, try again.";
+        getline(cin, choice);
+        option = stoi(choice);
+    }
+
+    return option;
+}
+
+int game::placeAntLocation() {
+    cout << "\nAt which square? [2-9]" << endl;
+    cout << "Hit Enter to confirm selection. Select:";
+
+    string choice;
+    getline(cin, choice);
+    int option = stoi(choice);
+    while (option < 2 || option > 9) {
+        cout << "\nBad input, try again.";
+        getline(cin, choice);
+        option = stoi(choice);
+    }
+
+    return option;
+}

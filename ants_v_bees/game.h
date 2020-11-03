@@ -35,6 +35,10 @@ public:
 	int checkBeeCount();
 	bool queenDead();
 
+	int menu();
+	int placeAnt();
+    int placeAntLocation();
+
 	// Game board 2D Vector
 	std::vector<std::vector<Insect>> gameBoard;
 
