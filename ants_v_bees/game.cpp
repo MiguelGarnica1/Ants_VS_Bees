@@ -15,9 +15,12 @@ using namespace std;
 
 game::game() {
 
-	this-> gameBoard = vector<vector<Insect>> (1);
-	this-> gameBoard[0] = vector<Insect>(10);
 
+	this-> gameBoard = vector<vector<Insect>> (1);
+
+
+	this-> gameBoard[0] = vector<Insect>(10);
+	
 	// Initializing the Queen
 	//gameBoard[0][0] = null;
 
