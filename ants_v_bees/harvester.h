@@ -5,9 +5,11 @@
 #ifndef ANTS_V_BEES_HARVESTER_H
 #define ANTS_V_BEES_HARVESTER_H
 
+#include "ant.h"
 
-class Harvester {
 
+class Harvester : public Ant{
+	// constructor
 };
 
 
