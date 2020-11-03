@@ -5,9 +5,14 @@
 #ifndef ANTS_V_BEES_NINJA_H
 #define ANTS_V_BEES_NINJA_H
 
+#include "ant.h"
 
-class ninja {
+class ninja : public Ant {
+    // constructor
+    ninja();
 
+    // destructor
+    ~ninja();
 };
 
 

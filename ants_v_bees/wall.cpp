@@ -3,3 +3,11 @@
 //
 
 #include "wall.h"
+
+wall::wall() {
+    this->name = "Wall";
+    this->armor = 4;
+    this->foodCost = 4;
+}
+
+wall::~wall() {}
