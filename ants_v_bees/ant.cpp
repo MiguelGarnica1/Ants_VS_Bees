@@ -5,7 +5,7 @@
 #include "ant.h"
 
 Ant::Ant() {
-
+	this->armor = 1;
 }
 
 Ant::Ant(Ant &orig) {

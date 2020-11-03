@@ -9,7 +9,16 @@
 
 
 class Harvester : public Ant{
+
+public:
 	// constructor
+	Harvester();
+
+	// copy constructor
+	Harvester(Harvester &other);
+
+	// destructor
+	~Harvester();
 };
 
 

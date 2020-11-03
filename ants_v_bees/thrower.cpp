@@ -3,3 +3,17 @@
 //
 
 #include "thrower.h"
+
+Thrower::Thrower() {
+	this->name = "Thrower";
+	this->foodCost = 4;
+}
+
+Thrower::Thrower(Thrower &other) {
+
+}
+
+Thrower::~Thrower() {
+
+}
+
