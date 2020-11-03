@@ -8,6 +8,32 @@
 
 class Insect {
 
+public:
+	// constructor
+	Insect();
+
+	// copy constructor
+	Insect(Insect &orig);
+
+	// destructor
+	~Insect();
+
+	// attack other insect
+	void attack(Insect &other);
+
+	// get damaged
+	void damaged(int damage);
+
+	// make move
+	void move();
+
+
+	/***
+	 * fields
+	 */
+	int health;
+	int armor;
+
 };
 
 

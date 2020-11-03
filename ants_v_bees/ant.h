@@ -5,9 +5,24 @@
 #ifndef ANTS_V_BEES_ANT_H
 #define ANTS_V_BEES_ANT_H
 
+#include "insect.h";
 
-class Ant {
+class Ant : public Insect {
 
+public:
+	// constructor
+	Ant();
+
+	// copy constructor
+	Ant(Ant &orig);
+
+	// destructor
+	~Ant();
+
+	// attack a bee
+	void attack(Insect &other);
+
+	// move
 };
 
 

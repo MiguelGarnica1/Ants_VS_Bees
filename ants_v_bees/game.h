@@ -6,7 +6,37 @@
 #define ANTS_V_BEES_GAME_H
 
 
-class Game {
+#include <vector>
+#include <string>
+#include "insect.h"
+
+class game {
+
+public:
+
+	// Constructor
+	game();
+
+	// Destructor
+	~game();
+
+	void gameLoop();
+
+	// Utility Functions
+	void printGameBoard();
+	void addRow();
+	void removeRow();
+
+	void generateBee();
+	void buyAnt();
+	void antAttack();
+	void beesAttack();
+
+	int checkBeeCount();
+	bool queenDead();
+
+	// Game board 2D Vector
+	std::vector<std::vector<Insect>> gameBoard;
 
 };
 
