@@ -3,3 +3,11 @@
 //
 
 #include "ninja.h"
+
+ninja::ninja() {
+    this->name = "Ninja";
+    this->armor = 1;
+    this->foodCost = 6;
+}
+
+ninja::~ninja() {}

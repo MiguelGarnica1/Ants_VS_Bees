@@ -5,9 +5,14 @@
 #ifndef ANTS_V_BEES_WALL_H
 #define ANTS_V_BEES_WALL_H
 
+#include "ant.h"
 
-class wall {
+class wall : public Ant {
+    // constructor
+    wall();
 
+    // destructor
+    ~wall();
 };
 
 
