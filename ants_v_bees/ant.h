@@ -5,7 +5,7 @@
 #ifndef ANTS_V_BEES_ANT_H
 #define ANTS_V_BEES_ANT_H
 
-#include "insect.h";
+#include "insect.h"
 
 class Ant : public Insect {
 
@@ -16,8 +16,12 @@ public:
 	// copy constructor
 	Ant(Ant &orig);
 
+	// Assignment operator overload
+	Ant & operator=( const Ant &right);
+
 	// destructor
 	~Ant();
+
 
 	// attack a bee
 	void attack(Insect &other);

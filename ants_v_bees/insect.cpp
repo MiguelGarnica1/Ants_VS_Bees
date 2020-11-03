@@ -18,6 +18,19 @@ Insect::Insect(Insect &orig) {
     this->location = orig.location;
 }
 
+Insect &Insect::operator=(const Insect &right) {
+
+	if (&right == this) {
+		return (*this);
+	} else {
+		this->name = right.name;
+		this->armor = right.armor;
+		this->location = right.location;
+		return (*this);
+	}
+
+}
+
 Insect::~Insect() {}
 
 void Insect::damaged(int damage) {

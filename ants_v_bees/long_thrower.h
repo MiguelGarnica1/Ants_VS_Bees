@@ -5,7 +5,7 @@
 #ifndef ANTS_V_BEES_LONG_THROWER_H
 #define ANTS_V_BEES_LONG_THROWER_H
 
-#include "ant.h";
+#include "ant.h"
 
 class Long_thrower : public Ant{
 

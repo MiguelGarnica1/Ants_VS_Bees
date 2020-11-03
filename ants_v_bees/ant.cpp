@@ -12,9 +12,21 @@ Ant::Ant(Ant &orig) {
 
 }
 
+Ant & Ant::operator=(const Ant &right) {
+	if (&right == this) {
+		return (*this);
+	} else {
+		this->name = right.name;
+		this->armor = right.armor;
+		this->location = right.location;
+		return (*this);
+	}
+}
+
 Ant::~Ant() {
 
 }
+
 
 void Ant::attack(Insect &other) {
 	other.damaged(1);

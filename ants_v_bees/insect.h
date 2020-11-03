@@ -19,8 +19,12 @@ public:
 	// copy constructor
 	Insect(Insect &orig);
 
+	// equals operator overload
+	Insect & operator=( const Insect &right);
+
 	// destructor
 	~Insect();
+
 
 	// attack other insect
 	void attack(Insect &other);

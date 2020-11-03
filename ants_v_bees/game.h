@@ -9,16 +9,18 @@
 #include <vector>
 #include <string>
 #include "insect.h"
+#include "place.h"
+using namespace std;
 
-class game {
+class Game {
 
 public:
 
 	// Constructor
-	game();
+	Game();
 
 	// Destructor
-	~game();
+	~Game();
 
 	void gameLoop();
 
@@ -40,9 +42,7 @@ public:
     int placeAntLocation();
 
 	// Game board 2D Vector
-	std::vector<std::vector<Insect>> gameBoard;
-
-
+	vector<Place> gameBoard;
 
 };
 

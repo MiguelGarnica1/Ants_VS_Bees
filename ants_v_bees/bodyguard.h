@@ -8,6 +8,8 @@
 #include "ant.h"
 
 class Bodyguard : public Ant {
+
+public:
     // constructor
     Bodyguard();
 

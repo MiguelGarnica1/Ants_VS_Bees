@@ -9,6 +9,8 @@
 #include "ant.h"
 
 class Short_thrower : public Ant {
+
+public:
     // constructor
     Short_thrower();
 

@@ -8,6 +8,8 @@
 #include "ant.h"
 
 class Ninja : public Ant {
+
+public:
     // constructor
     Ninja();
 

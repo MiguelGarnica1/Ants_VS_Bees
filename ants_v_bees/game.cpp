@@ -13,16 +13,13 @@
 
 using namespace std;
 
-game::game() {
+Game::Game()  {
 
+	// intialize the gameboard of Places with 10 spaces
+	this-> gameBoard = vector<Place>(10);
 
-	this-> gameBoard = vector<vector<Insect>> (1);
-
-
-	this-> gameBoard[0] = vector<Insect>(10);
-
-	// Initializing the Queen
-	//gameBoard[0][0] = null;
+	// initialize the queen
+	this-> gameBoard[0].ant = new Ant();
 
 	/**
 	 *  [Q], [], [], [], [], [], [], [], [Fire], [Bee, Bee]
@@ -31,20 +28,58 @@ game::game() {
 	gameLoop();
 }
 
-game::~game() {
+Game::~Game() {
 
 }
 
 #include "game.h"
-void game::gameLoop() {
+void Game::gameLoop() {
 
 	printGameBoard();
 
 	do {
 
 		// 1) A bee is generated on the right side of the board
+		generateBee();
 
 		// 2) The player can generate an ant and place it anywhere on the board
+		int option = menu();
+
+		if(option == 1){
+			cout << " TURN ENDED " << endl;
+			continue;
+		}
+		if (option == 2){
+			option = placeAnt();
+		}
+
+		switch (option) {
+			case 1:
+				cout << "Add Harvester Ant" << endl;
+				break;
+			case 2:
+				cout << "Add Thrower Ant" << endl;
+				break;
+			case 3:
+				cout << "Add Fire Ant" << endl;
+				break;
+			case 4:
+				cout << "Add Long Thrower Ant" << endl;
+				break;
+			case 5:
+				cout << "Add Short Thrower Ant" << endl;
+				break;
+			case 6:
+				cout << "Add Wall Ant" << endl;
+				break;
+			case 7:
+				cout << "Add Ninja Ant" << endl;
+				break;
+			case 8:
+				cout << "Add Bodyg2aurd Ant" << endl;
+				break;
+		}
+
 
 		// 3) The ants attack the bees. (Order of ant attacks occur left to right)
 
@@ -69,54 +104,50 @@ void game::gameLoop() {
 	}
 }
 
-void game::printGameBoard() {
-
-	for(int i = 0; i < gameBoard[0].size(); i++) {
-
-		string squareBugs = "";
-		for(int j = 0; j < gameBoard.size(); j++) {
-
-//			string str = gameBoard[j][i].symbol;
-//			squareBugs.append(str);
-//
-//			if(str != "" && j != gameBoard.size()-1) {
-//				squareBugs.append(", ");
-//			}
-		}
-
-		cout << "[" << i+1 << ": "<< squareBugs << " ] ";
-	}
+void Game::generateBee() {
+	this->gameBoard.at(8).bees->push_back(new Bee());
 }
 
-bool game::queenDead() {
+void Game::printGameBoard() {
+	for(int i = 0; i < gameBoard.size(); i++){
+		cout << "Square " << i << endl;
+		if(gameBoard[i].ant != NULL){
+			cout << "Ant IS HERE" << endl;
+		}
 
-	for(int j = 0; j < gameBoard.size(); j++) {
+		if(gameBoard.at(i).bees != NULL) {
+			cout << "SO MANY BEES, THIS MANY BEES #" << gameBoard[i].bees->size() << endl;
+		}
 
-//		if(gameBoard[j][0].symbol == "Bee") {
-//			return true;
-//		}
+	}
+
+}
+
+bool Game::queenDead() {
+
+	for(int i = 0; i < gameBoard.size(); i++) {
+
+		if(!gameBoard[i].bees->empty()){
+			return true;
+		}
 	}
 
 	return false;
 }
 
-int game::checkBeeCount() {
-	int beeCount = 0;
+int Game::checkBeeCount() {
+	int beeCount = 10;
 
 	for(int i = 0; i < gameBoard.size(); i++) {
-
-		for(int j = 0; j < gameBoard[i].size(); j++) {
-
-//			if(i > 0 && gameBoard[i][j].symbol == "Bee") {
-//				beeCount++;
-//			}
+		if(!gameBoard[i].bees->empty()){
+			beeCount += gameBoard[i].bees->size();
 		}
 	}
 
 	return beeCount;
 }
 
-int game::menu() {
+int Game::menu() {
     cout << "\n1. End turn" << endl;
     cout << "2. Place ant." << endl;
     cout << "Hit Enter to confirm selection. Select:";
@@ -133,7 +164,7 @@ int game::menu() {
     return option;
 }
 
-int game::placeAnt() {
+int Game::placeAnt() {
     cout << "\nPlacing ant. Which ant?" << endl;
     cout << "1. Harvester       5. Short Thrower" << endl;
     cout << "2. Thrower         6. Wall" << endl;
@@ -153,7 +184,7 @@ int game::placeAnt() {
     return option;
 }
 
-int game::placeAntLocation() {
+int Game::placeAntLocation() {
     cout << "\nAt which square? [2-9]" << endl;
     cout << "Hit Enter to confirm selection. Select:";
 

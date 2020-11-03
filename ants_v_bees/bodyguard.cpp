@@ -4,10 +4,10 @@
 
 #include "bodyguard.h"
 
-bodyguard::bodyguard() {
+Bodyguard::Bodyguard() {
     this->name = "Bodyguard";
     this->armor = 2;
     this->foodCost = 4;
 }
 
-bodyguard::~bodyguard() {}
+Bodyguard::~Bodyguard() {}

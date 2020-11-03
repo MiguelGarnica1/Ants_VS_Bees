@@ -8,6 +8,8 @@
 #include "ant.h"
 
 class Wall : public Ant {
+
+public:
     // constructor
     Wall();
 

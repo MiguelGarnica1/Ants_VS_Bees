@@ -8,11 +8,16 @@
 #include "insect.h"
 
 class Bee : public Insect {
+
+public:
 	// constructor
     Bee();
 
 	// copy constructor
 	Bee(Bee &orig);
+
+	// assignment operator overload
+	Bee & operator=(const Bee &right);
 
 	// destructor
 	~Bee();

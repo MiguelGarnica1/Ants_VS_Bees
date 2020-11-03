@@ -17,4 +17,15 @@ Bee::Bee(Bee &orig) {
     this->location = orig.location;
 }
 
+Bee & Bee::operator=(const Bee &right) {
+	if (&right == this) {
+		return (*this);
+	} else {
+		this->name = right.name;
+		this->armor = right.armor;
+		this->location = right.location;
+		return (*this);
+	}
+}
+
 Bee::~Bee() {}
