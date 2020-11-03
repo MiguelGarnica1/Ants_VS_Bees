@@ -9,7 +9,7 @@
 
 class Bee : public Insect {
 	// constructor
-	Bee();
+    Bee();
 
 	// copy constructor
 	Bee(Bee &orig);

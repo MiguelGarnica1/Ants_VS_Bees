@@ -20,7 +20,7 @@ game::game() {
 
 
 	this-> gameBoard[0] = vector<Insect>(10);
-	
+
 	// Initializing the Queen
 	//gameBoard[0][0] = null;
 

@@ -5,12 +5,16 @@
 #ifndef ANTS_V_BEES_INSECT_H
 #define ANTS_V_BEES_INSECT_H
 
+#include "string"
+
+using namespace std;
 
 class Insect {
 
 public:
 	// constructor
-	Insect();
+    Insect();
+	Insect(string newName, int newArmor, int newLocation);
 
 	// copy constructor
 	Insect(Insect &orig);
@@ -31,9 +35,9 @@ public:
 	/***
 	 * fields
 	 */
-	int health;
 	int armor;
-
+	string name;
+	int location;
 };
 
 
