@@ -4,9 +4,20 @@
 
 #ifndef ANTS_V_BEES_THROWER_H
 #define ANTS_V_BEES_THROWER_H
+#include "ant.h"
 
+class Thrower : public Ant{
 
-class Thrower {
+public:
+	// constructor
+	Thrower();
+
+	// copy constructor
+	Thrower(Thrower &other);
+
+	// destructor
+	~Thrower();
+
 
 };
 

@@ -3,3 +3,17 @@
 //
 
 #include "harvester.h"
+
+Harvester::Harvester() {
+	this->name = "Harvester";
+	this->foodCost = 2;
+}
+
+Harvester::Harvester(Harvester &other) {
+
+}
+
+Harvester::~Harvester() {
+
+}
+
