@@ -8,12 +8,12 @@
 #include "insect.h"
 #include "ant.h"
 
-class short_thrower : public Ant {
+class Short_thrower : public Ant {
     // constructor
-    short_thrower();
+    Short_thrower();
 
     // destructor
-    ~short_thrower();
+    ~Short_thrower();
 
     // attack a bee
     void attack(Insect &other);
@@ -27,8 +27,6 @@ class short_thrower : public Ant {
     /***
      * fields
      */
-
-    int foodCost;
 };
 
 

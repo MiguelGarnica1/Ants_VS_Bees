@@ -7,12 +7,12 @@
 
 #include "ant.h"
 
-class ninja : public Ant {
+class Ninja : public Ant {
     // constructor
-    ninja();
+    Ninja();
 
     // destructor
-    ~ninja();
+    ~Ninja();
 };
 
 

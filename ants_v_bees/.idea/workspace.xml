@@ -30,16 +30,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc5ee574-db46-455c-82d8-073873312f72" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/fire.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fire.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ant.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ant.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/harvester.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/harvester.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/harvester.h" beforeDir="false" afterPath="$PROJECT_DIR$/harvester.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/long_thrower.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/long_thrower.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/long_thrower.h" beforeDir="false" afterPath="$PROJECT_DIR$/long_thrower.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/thrower.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/thrower.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/thrower.h" beforeDir="false" afterPath="$PROJECT_DIR$/thrower.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ninja.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ninja.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ninja.h" beforeDir="false" afterPath="$PROJECT_DIR$/ninja.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/short_thrower.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/short_thrower.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/short_thrower.h" beforeDir="false" afterPath="$PROJECT_DIR$/short_thrower.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wall.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/wall.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wall.h" beforeDir="false" afterPath="$PROJECT_DIR$/wall.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

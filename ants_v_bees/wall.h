@@ -7,12 +7,12 @@
 
 #include "ant.h"
 
-class wall : public Ant {
+class Wall : public Ant {
     // constructor
-    wall();
+    Wall();
 
     // destructor
-    ~wall();
+    ~Wall();
 };
 
 

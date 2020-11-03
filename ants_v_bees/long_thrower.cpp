@@ -7,5 +7,4 @@
 Long_thrower::Long_thrower() {
 	this->name = "Long Thrower";
 	this->foodCost = 3;
-	
 }

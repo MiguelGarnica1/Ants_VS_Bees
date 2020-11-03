@@ -4,10 +4,11 @@
 
 #include "short_thrower.h"
 
-short_thrower::short_thrower() {
+Short_thrower::Short_thrower() {
     this->name = "Short Thrower";
-    this->armor = 1;
     this->foodCost = 3;
 }
 
-short_thrower::~short_thrower() {}
+Short_thrower::~Short_thrower() {
+
+}

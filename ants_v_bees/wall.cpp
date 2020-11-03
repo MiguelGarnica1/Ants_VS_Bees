@@ -4,10 +4,12 @@
 
 #include "wall.h"
 
-wall::wall() {
+Wall::Wall() {
     this->name = "Wall";
     this->armor = 4;
     this->foodCost = 4;
 }
 
-wall::~wall() {}
+Wall::~Wall() {
+
+}

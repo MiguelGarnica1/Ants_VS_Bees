@@ -4,10 +4,11 @@
 
 #include "ninja.h"
 
-ninja::ninja() {
+Ninja::Ninja() {
     this->name = "Ninja";
-    this->armor = 1;
     this->foodCost = 6;
 }
 
-ninja::~ninja() {}
+Ninja::~Ninja() {
+
+}
