@@ -189,8 +189,11 @@ void Game::antAttack() {
 
 void Game::doThrower(int location) {
     // If there are bees damage the 1st bee.
-    if(!gameBoard[location].bees->empty())
+    if (!gameBoard[location].bees->empty())
         gameBoard[location].bees->front()->damaged(1);
+    if (gameBoard[location].bees->front()->isDead) {
+        gameBoard[location].bees->erase(gameBoard[location].bees->begin());
+    }
 }
 
 void Game::doLongThrower(int location) {}
