@@ -31,12 +31,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bc5ee574-db46-455c-82d8-073873312f72" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ant.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ant.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ant.h" beforeDir="false" afterPath="$PROJECT_DIR$/ant.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/game.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.h" beforeDir="false" afterPath="$PROJECT_DIR$/game.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/insect.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/insect.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/insect.h" beforeDir="false" afterPath="$PROJECT_DIR$/insect.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,38 +109,38 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="562" key="GridCell.Tab.0.bottom" timestamp="1604450317255">
+    <state width="1877" height="388" key="GridCell.Tab.0.bottom" timestamp="1604517609913">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="562" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604450317255" />
-    <state width="1877" height="562" key="GridCell.Tab.0.center" timestamp="1604450317254">
+    <state width="1877" height="388" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604517609913" />
+    <state width="1877" height="388" key="GridCell.Tab.0.center" timestamp="1604517609913">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="562" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604450317254" />
-    <state width="1877" height="562" key="GridCell.Tab.0.left" timestamp="1604450317254">
+    <state width="1877" height="388" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604517609913" />
+    <state width="1877" height="388" key="GridCell.Tab.0.left" timestamp="1604517609913">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="562" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604450317254" />
-    <state width="1877" height="562" key="GridCell.Tab.0.right" timestamp="1604450317254">
+    <state width="1877" height="388" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604517609913" />
+    <state width="1877" height="388" key="GridCell.Tab.0.right" timestamp="1604517609913">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="562" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604450317254" />
-    <state width="1877" height="399" key="GridCell.Tab.1.bottom" timestamp="1604448572876">
+    <state width="1877" height="388" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604517609913" />
+    <state width="1877" height="207" key="GridCell.Tab.1.bottom" timestamp="1604517232504">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="399" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604448572876" />
-    <state width="1877" height="399" key="GridCell.Tab.1.center" timestamp="1604448572876">
+    <state width="1877" height="207" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604517232504" />
+    <state width="1877" height="207" key="GridCell.Tab.1.center" timestamp="1604517232504">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="399" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604448572876" />
-    <state width="1877" height="399" key="GridCell.Tab.1.left" timestamp="1604448572876">
+    <state width="1877" height="207" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604517232504" />
+    <state width="1877" height="207" key="GridCell.Tab.1.left" timestamp="1604517232504">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="399" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604448572876" />
-    <state width="1877" height="399" key="GridCell.Tab.1.right" timestamp="1604448572876">
+    <state width="1877" height="207" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604517232504" />
+    <state width="1877" height="207" key="GridCell.Tab.1.right" timestamp="1604517232504">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="399" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604448572876" />
+    <state width="1877" height="207" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604517232504" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -161,6 +156,9 @@
       <configuration name="CMakeRunConfiguration">
         <watch expression="this-&gt;isDead = true;" language="ObjectiveC" />
         <watch expression="gameBoard[i].ant != NULL &amp;&amp; gameBoard[i].ant-&gt;name.compare(&quot;Ninja&quot;)" language="ObjectiveC" />
+        <watch expression="if (gameBoard[location].bees-&gt;front()-&gt;isDead) {         gameBoard[location].bees-&gt;erase(gameBoard[location].bees-&gt;begin());     }" language="ObjectiveC" />
+        <watch expression="if (gameBoard[location].bees-&gt;front()-&gt;isDead) {         gameBoard[location].bees-&gt;erase(gameBoard[location].bees-&gt;begin());     }" language="ObjectiveC" />
+        <watch expression="gameBoard[i].bees-&gt;size();" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>

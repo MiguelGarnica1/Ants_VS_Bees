@@ -183,7 +183,7 @@ void Game::antAttack() {
         if (antName.compare("Harvester") == 0) {this->food++;}
         else if (antName.compare("Thrower") == 0) {this->doThrower(i);}
         else if (antName.compare("Long Thrower") == 0) {}
-        else if (antName.compare("Short Thrower") == 0) {}
+        else if (antName.compare("Short Thrower") == 0) {this->doShortThrower(i);}
     }
 }
 
@@ -196,9 +196,33 @@ void Game::doThrower(int location) {
     }
 }
 
-void Game::doLongThrower(int location) {}
+void Game::doLongThrower(int location) {
 
-void Game::doShortThrower(int location) {}
+}
+
+void Game::doShortThrower(int location) {
+	int higher = location + 2;
+	if (higher >= gameBoard.size()) higher = gameBoard.size()-1;
+	bool foundABee = false;
+
+	for(int i = location; i <= higher; i++){
+
+		if(!gameBoard[i].bees->empty()) foundABee = true;
+		// attack bees in current location
+		for(int j = 0; j < gameBoard[i].bees->size(); j++){
+			gameBoard[i].bees->at(j)->damaged(1);
+		}
+		// delete all bees that died
+		for(int j = 0; j < gameBoard[i].bees->size(); j++){
+			if (gameBoard[i].bees->at(j)->isDead) {
+				gameBoard[i].bees->erase(gameBoard[i].bees->begin()+j);
+				j--;
+			}
+		}
+
+		if(foundABee) break;
+	}
+}
 
 void Game::beesAttack() {
     // Go through the game board.
