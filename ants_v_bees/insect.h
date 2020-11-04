@@ -42,6 +42,7 @@ public:
 	int armor;
 	string name;
 	int location;
+	bool isDead;
 };
 
 

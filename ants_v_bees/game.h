@@ -30,7 +30,6 @@ public:
 	void removeRow();
 
 	void generateBee();
-	void buyAnt();
 	void antAttack();
 	void beesAttack();
 

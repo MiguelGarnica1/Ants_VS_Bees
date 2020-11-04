@@ -5,6 +5,7 @@
 #include "ant.h"
 
 Ant::Ant() {
+	this->name = "Queen";
 	this->armor = 1;
 }
 
@@ -30,8 +31,4 @@ Ant::~Ant() {
 
 void Ant::attack(Insect &other) {
 	other.damaged(1);
-}
-
-void Ant::damaged(int damage) {
-	this->armor -= damage;
 }

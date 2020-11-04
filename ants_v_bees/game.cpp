@@ -8,6 +8,14 @@
 #include "game.h"
 #include "insect.h"
 #include "ant.h"
+#include "harvester.h"
+#include "thrower.h"
+#include "fire.h"
+#include "long_thrower.h"
+#include "short_thrower.h"
+#include "ninja.h"
+#include "wall.h"
+#include "bodyguard.h"
 #include "bee.h"
 
 
@@ -25,7 +33,6 @@ Game::Game()  {
 	 *  [Q], [], [], [], [], [], [], [], [Fire], [Bee, Bee]
 	 */
 
-	gameLoop();
 }
 
 Game::~Game() {
@@ -35,18 +42,29 @@ Game::~Game() {
 #include "game.h"
 void Game::gameLoop() {
 
-	printGameBoard();
-
+	int turn_counter = 1;
 	do {
+
+		/*** NEED TO IMPLEMENT
+		 *  Ant attacks, fire ant, throwers
+		 *  food cost
+		 */
+
+		if(queenDead()) break;
 
 		// 1) A bee is generated on the right side of the board
 		generateBee();
+		printGameBoard();
+
+		cout << "\nTurn #" << turn_counter << endl;
+		turn_counter++;
 
 		// 2) The player can generate an ant and place it anywhere on the board
 		int option = menu();
 
 		if(option == 1){
-			cout << " TURN ENDED " << endl;
+			cout << "TURN ENDED " << endl;
+			beesAttack();
 			continue;
 		}
 		if (option == 2){
@@ -55,28 +73,36 @@ void Game::gameLoop() {
 
 		switch (option) {
 			case 1:
+				gameBoard[placeAntLocation()].ant = new Harvester();
 				cout << "Add Harvester Ant" << endl;
 				break;
 			case 2:
+				gameBoard[placeAntLocation()].ant = new Thrower();
 				cout << "Add Thrower Ant" << endl;
 				break;
 			case 3:
+				gameBoard[placeAntLocation()].ant = new Fire();
 				cout << "Add Fire Ant" << endl;
 				break;
 			case 4:
+				gameBoard[placeAntLocation()].ant = new Long_thrower();
 				cout << "Add Long Thrower Ant" << endl;
 				break;
 			case 5:
+				gameBoard[placeAntLocation()].ant = new Short_thrower();
 				cout << "Add Short Thrower Ant" << endl;
 				break;
 			case 6:
+				gameBoard[placeAntLocation()].ant = new Wall();
 				cout << "Add Wall Ant" << endl;
 				break;
 			case 7:
+				gameBoard[placeAntLocation()].ant = new Ninja();
 				cout << "Add Ninja Ant" << endl;
 				break;
 			case 8:
-				cout << "Add Bodyg2aurd Ant" << endl;
+				gameBoard[placeAntLocation()].bodyguard = new Bodyguard();
+				cout << "Add Bodygaurd Ant" << endl;
 				break;
 		}
 
@@ -87,6 +113,8 @@ void Game::gameLoop() {
 		* 4) The bees either attack an ant (order of attack is left to right) which is blocking
 		* them or pass through to the next square on the board if they are not blocked by an ant
 		*/
+
+		beesAttack();
 
 		/**
 		 * 5) Check to see if the bees have reached the queen or if there are any bees left in play,
@@ -104,19 +132,44 @@ void Game::gameLoop() {
 	}
 }
 
+void Game::antAttack() {
+
+}
+
+void Game::beesAttack() {
+
+
+	for(int i = 1; i < gameBoard.size(); i++){
+		if(gameBoard[i].bees->empty()) continue;
+
+		for(int j = 0; j < gameBoard[i].bees->size(); j++){
+			if(gameBoard[i].ant != NULL && gameBoard[i].ant->name.compare("Ninja")){
+				gameBoard[i].ant->damaged(1);
+				if(gameBoard[i].ant->isDead) gameBoard[i].ant = NULL; /// REMEMBER TO DELETE
+			}else if (i > 0){
+				// if no ant, move the bee and delete old bee
+				gameBoard[i-1].bees->push_back(gameBoard[i].bees->at(j));
+
+				// cannot use number to erase
+				gameBoard[i].bees->erase(gameBoard[i].bees->begin() + j);
+			}
+		}
+	}
+}
+
 void Game::generateBee() {
-	this->gameBoard.at(8).bees->push_back(new Bee());
+	this->gameBoard.at(gameBoard.size()-1).bees->push_back(new Bee());
 }
 
 void Game::printGameBoard() {
 	for(int i = 0; i < gameBoard.size(); i++){
-		cout << "Square " << i << endl;
+		cout << "Square " << i+1;
 		if(gameBoard[i].ant != NULL){
-			cout << "Ant IS HERE" << endl;
+			cout << " " <<gameBoard[i].ant->name <<" Ant, Health:  " << gameBoard[i].ant->armor << ", DEade? " << gameBoard[i].ant->isDead;
 		}
 
 		if(gameBoard.at(i).bees != NULL) {
-			cout << "SO MANY BEES, THIS MANY BEES #" << gameBoard[i].bees->size() << endl;
+			cout << " BEES #" << gameBoard[i].bees->size() << endl;
 		}
 
 	}
@@ -125,18 +178,15 @@ void Game::printGameBoard() {
 
 bool Game::queenDead() {
 
-	for(int i = 0; i < gameBoard.size(); i++) {
-
-		if(!gameBoard[i].bees->empty()){
-			return true;
-		}
+	if(!gameBoard[0].bees->empty()){
+		return true;
 	}
 
 	return false;
 }
 
 int Game::checkBeeCount() {
-	int beeCount = 10;
+	int beeCount = 0;
 
 	for(int i = 0; i < gameBoard.size(); i++) {
 		if(!gameBoard[i].bees->empty()){
@@ -197,5 +247,5 @@ int Game::placeAntLocation() {
         option = stoi(choice);
     }
 
-    return option;
+    return option-1;
 }

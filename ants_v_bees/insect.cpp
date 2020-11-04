@@ -4,7 +4,9 @@
 
 #include "insect.h"
 
-Insect::Insect() {}
+Insect::Insect() {
+	this->isDead = false;
+}
 
 Insect::Insect(string newName, int newArmor, int newLocation) {
     this->name = newName;
@@ -34,5 +36,8 @@ Insect &Insect::operator=(const Insect &right) {
 Insect::~Insect() {}
 
 void Insect::damaged(int damage) {
-    this->armor = this->armor - damage;
+	this->armor = this->armor - damage;
+	if(armor <= 0){
+		this->isDead = true;
+	}
 }
