@@ -65,6 +65,7 @@ void Game::gameLoop() {
 
         antAttack();
 
+
         /**
         * 4) The bees either attack an ant (order of attack is left to right) which is blocking
         * them or pass through to the next square on the board if they are not blocked by an ant
@@ -182,47 +183,84 @@ void Game::antAttack() {
         // If ant is Harvester, get food
         if (antName.compare("Harvester") == 0) {this->food++;}
         else if (antName.compare("Thrower") == 0) {this->doThrower(i);}
-        else if (antName.compare("Long Thrower") == 0) {}
-        else if (antName.compare("Short Thrower") == 0) {this->doShortThrower(i);}
+        else if (antName.compare("Long Thrower") == 0) {this->doLongThrower(i);}
+        else if (antName.compare("Short Thrower") == 0) {}
     }
 }
 
 void Game::doThrower(int location) {
     // If there are bees damage the 1st bee.
-    if (!gameBoard[location].bees->empty())
+    if (!gameBoard[location].bees->empty()) {
         gameBoard[location].bees->front()->damaged(1);
-    if (gameBoard[location].bees->front()->isDead) {
-        gameBoard[location].bees->erase(gameBoard[location].bees->begin());
+        if (gameBoard[location].bees->front()->isDead) {
+            gameBoard[location].bees->erase(gameBoard[location].bees->begin());
+        }
     }
 }
 
 void Game::doLongThrower(int location) {
+    // Initialize 'minDist', 'distFromLoc' to max.
+    int minDist = INT_MAX;
+    int distFromLoc = INT_MAX;
 
+    // Trying to go through the game board to find good target.
+    for (int i = 1; i < gameBoard.size(); i++) {
+        // Valid target must be at least 4 squares away.
+        if (abs(i - location) < 4) continue;
+        // Find the distance to the closest valid bee target.
+        if (!gameBoard[i].bees->empty()) {
+            distFromLoc = abs(i - location);
+            if (distFromLoc < minDist)
+                minDist = distFromLoc;
+        }
+    }
+
+    // If 'minDist' is changed, then a valid target was found.
+    if (minDist != INT_MAX) {
+        // Long Thrower hurts each bee which is closest to it, but at least 4 squares away.
+        // Handles closest bees to left (same 'minDist' as right) if valid.
+        if ((location - minDist) >= 1) {
+            int leftTarget = location - minDist;
+            for (int j = 0; j < gameBoard[leftTarget].bees->size(); j++) {
+                // If there are bees left.
+                if (!gameBoard[leftTarget].bees->empty()) {
+                    // Damage each bees.
+                    gameBoard[leftTarget].bees->front()->damaged(1);
+                    // If bee dead.
+                    if (gameBoard[leftTarget].bees->front()->isDead) {
+                        // 'Bee' erased from vector. Other 'Bee's in vector is shifted.
+                        // Take into account this shift by offsetting 'j' counter.
+                        gameBoard[leftTarget].bees->erase(gameBoard[leftTarget].bees->begin());
+                        j--;
+                    }
+                }
+            }
+        }
+        // Handles closest bees to right (same 'minDist' as left) if valid.
+        if ((location + minDist) <= 10) {
+            int rightTarget = location + minDist;
+            for (int j = 0; j < gameBoard[rightTarget].bees->size(); j++) {
+                // If there are bees left.
+                if (!gameBoard[rightTarget].bees->empty()) {
+                    // Damage each bees.
+                    gameBoard[rightTarget].bees->front()->damaged(1);
+                    // If bee dead.
+                    if (gameBoard[rightTarget].bees->front()->isDead) {
+                        // 'Bee' erased from vector. Other 'Bee's in vector is shifted.
+                        // Take into account this shift by offsetting 'j' counter.
+                        gameBoard[rightTarget].bees->erase(gameBoard[rightTarget].bees->begin());
+                        j--;
+                    }
+                }
+            }
+        }
+    }
+
+
+    cout << "Long at " << location << " closest " << minDist;
 }
 
-void Game::doShortThrower(int location) {
-	int higher = location + 2;
-	if (higher >= gameBoard.size()) higher = gameBoard.size()-1;
-	bool foundABee = false;
-
-	for(int i = location; i <= higher; i++){
-
-		if(!gameBoard[i].bees->empty()) foundABee = true;
-		// attack bees in current location
-		for(int j = 0; j < gameBoard[i].bees->size(); j++){
-			gameBoard[i].bees->at(j)->damaged(1);
-		}
-		// delete all bees that died
-		for(int j = 0; j < gameBoard[i].bees->size(); j++){
-			if (gameBoard[i].bees->at(j)->isDead) {
-				gameBoard[i].bees->erase(gameBoard[i].bees->begin()+j);
-				j--;
-			}
-		}
-
-		if(foundABee) break;
-	}
-}
+void Game::doShortThrower(int location) {}
 
 void Game::beesAttack() {
     // Go through the game board.
@@ -242,7 +280,7 @@ void Game::processBeesInBoard(int board) {
                 gameBoard[board].bodyguard = NULL; /// REMEMBER TO DELETE
             }
         }
-        // If there's an non-Ninja ant, bee attack.
+            // If there's an non-Ninja ant, bee attack.
         else if (gameBoard[board].ant != NULL && (gameBoard[board].ant->name.compare("Ninja") != 0)) {
             gameBoard[board].ant->damaged(1);
             // When ant is killed.
@@ -253,7 +291,7 @@ void Game::processBeesInBoard(int board) {
                 gameBoard[board].ant = NULL; /// REMEMBER TO DELETE
             }
         }
-        // Bee moving.
+            // Bee moving.
         else {
             // If there's Ninja ant, bee at j take damage.
             if (gameBoard[board].ant != NULL && (gameBoard[board].ant->name.compare("Ninja") == 0)) {
