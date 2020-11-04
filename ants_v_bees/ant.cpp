@@ -19,7 +19,6 @@ Ant & Ant::operator=(const Ant &right) {
 	} else {
 		this->name = right.name;
 		this->armor = right.armor;
-		this->location = right.location;
 		return (*this);
 	}
 }

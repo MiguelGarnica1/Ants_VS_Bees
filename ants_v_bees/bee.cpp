@@ -8,13 +8,11 @@
 Bee::Bee() {
     this->name = "Bee";
     this->armor = 3;
-    this->location = 10;
 }
 
 Bee::Bee(Bee &orig) {
     this->name = orig.name;
     this->armor = orig.armor;
-    this->location = orig.location;
 }
 
 Bee & Bee::operator=(const Bee &right) {
@@ -23,7 +21,6 @@ Bee & Bee::operator=(const Bee &right) {
 	} else {
 		this->name = right.name;
 		this->armor = right.armor;
-		this->location = right.location;
 		return (*this);
 	}
 }

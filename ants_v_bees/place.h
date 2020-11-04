@@ -26,7 +26,7 @@ public:
 	Ant *ant;
 	Bodyguard *bodyguard;
 	vector<Bee*> *bees;
-
+	int location;
 };
 
 

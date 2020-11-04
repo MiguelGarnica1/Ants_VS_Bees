@@ -11,13 +11,11 @@ Insect::Insect() {
 Insect::Insect(string newName, int newArmor, int newLocation) {
     this->name = newName;
     this->armor = newArmor;
-    this->location = newLocation;
 }
 
 Insect::Insect(Insect &orig) {
     this->name = orig.name;
     this->armor = orig.armor;
-    this->location = orig.location;
 }
 
 Insect &Insect::operator=(const Insect &right) {
@@ -27,7 +25,6 @@ Insect &Insect::operator=(const Insect &right) {
 	} else {
 		this->name = right.name;
 		this->armor = right.armor;
-		this->location = right.location;
 		return (*this);
 	}
 

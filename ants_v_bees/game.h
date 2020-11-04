@@ -16,33 +16,47 @@ class Game {
 
 public:
 
-	// Constructor
-	Game();
+    // Constructor
+    Game();
 
-	// Destructor
-	~Game();
+    // Destructor
+    ~Game();
 
-	void gameLoop();
+    void gameLoop();
 
-	// Utility Functions
-	void printGameBoard();
-	void addRow();
-	void removeRow();
+    // Utility Functions
+    void printGameBoard();
+    void placeAnt();
+    void placeHarvester(int location);
+    void placeThrower(int location);
+    void placeFire(int location);
+    void placeLongThrower(int location);
+    void placeShortThrower(int location);
+    void placeWall(int location);
+    void placeNinja(int location);
+    void placeBodyguard(int location);
 
-	void generateBee();
-	void antAttack();
-	void beesAttack();
+    void generateBee();
+    void antAttack();
+    void doThrower(int location);
+    void doLongThrower(int location);
+    void doShortThrower(int location);
 
-	int checkBeeCount();
-	bool queenDead();
+    void beesAttack();
+    void processBeesInBoard(int boardLocation);
 
-	int menu();
-	int placeAnt();
-    int placeAntLocation();
+    int checkBeeCount();
+    bool queenDead();
 
-	// Game board 2D Vector
-	vector<Place> gameBoard;
+    int menu();
+    int pickAnt();
+    int pickAntLocation(int antChoice);
 
+private:
+    // Game board 2D Vector
+    vector<Place> gameBoard;
+    int turn_counter;
+    int food;
 };
 
 
