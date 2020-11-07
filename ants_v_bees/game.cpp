@@ -21,6 +21,9 @@
 
 using namespace std;
 
+/*** constructor
+ *  initialize gameboard, turn counter, and initial food.
+ */
 Game::Game()  {
     // initialize game board with 11 'Place's. The 10 spaces, and 1 at the beginning (left
     // most) to represent the queen ant dead.
@@ -32,22 +35,19 @@ Game::Game()  {
     // initialize 'food' to 50 starting food.
     this->food = 50;
 
-    /**
-     *  [Q], [], [], [], [], [], [], [], [Fire], [Bee, Bee]
-     */
 }
 
+/***
+ * destructor
+ */
 Game::~Game() {}
 
-#include "game.h"
+
+/*** gameloop
+ *  handles user input and turn based attack of ant and bees
+ */
 void Game::gameLoop() {
     do {
-        /*** NEED TO IMPLEMENT
-         *  Ant attacks, fire ant, throwers
-         *  food cost
-         */
-
-        if(queenDead()) break;
 
         // 1) A bee is generated on the right side of the board
         generateBee();
@@ -57,9 +57,6 @@ void Game::gameLoop() {
         // if not, auto-end turn.
         int option = menu();
         if (option == 2) {this->placeAnt();}
-
-        this->turn_counter ++;
-        cout << "TURN ENDED." << endl;
 
         // 3) The ants attack the bees. (Order of ant attacks occur left to right)
 
@@ -77,7 +74,11 @@ void Game::gameLoop() {
          * 5) Check to see if the bees have reached the queen or if there are any bees left in play,
          * declare a winner and end the game if either condition is true
          */
-    } while(!queenDead() || checkBeeCount() != 0);
+
+		this->turn_counter ++;
+		cout << "TURN ENDED." << endl;
+
+    } while(!queenDead() && checkBeeCount() != 0);
 
     if(queenDead()) {
         cout << "\n" << "The queen is dead! The bees win!" << endl;
@@ -87,6 +88,9 @@ void Game::gameLoop() {
     }
 }
 
+/*** place a user selected ant on a user selected square if available
+ *
+ */
 void Game::placeAnt() {
     int option = pickAnt();
     switch (option) {
@@ -109,71 +113,121 @@ void Game::placeAnt() {
     }
 }
 
+/*** Place a harvester ant on the game board
+ *
+ * @param location - int - square on which to place the ant [1-10]
+ */
 void Game::placeHarvester(int location) {
-    if ((this->food - 2) >= 0) {
-        gameBoard[location].ant = new Harvester();
+	Harvester *harvester = new Harvester();
+    if ((this->food - harvester->foodCost) >= 0) {
+        gameBoard[location].ant = harvester;
         cout << "Added Harvester Ant" << endl;
-        this->food -= 2;
-    }
-    else {cout << "Not enough food.";}
-}
-void Game::placeThrower(int location) {
-    if ((this->food - 4) >= 0) {
-        gameBoard[location].ant = new Thrower();
-        cout << "Added Thrower Ant" << endl;
-        this->food -= 4;
-    }
-    else {cout << "Not enough food.";}
-}
-void Game::placeFire(int location) {
-    if ((this->food - 4) >= 0) {
-        gameBoard[location].ant = new Fire();
-        cout << "Added Fire Ant" << endl;
-        this->food -= 4;
-    }
-    else {cout << "Not enough food.";}
-}
-void Game::placeLongThrower(int location) {
-    if ((this->food - 3) >= 0) {
-        gameBoard[location].ant = new Long_thrower();
-        cout << "Added Long Thrower Ant" << endl;
-        this->food -= 3;
-    }
-    else {cout << "Not enough food.";}
-}
-void Game::placeShortThrower(int location) {
-    if ((this->food - 3) >= 0) {
-        gameBoard[location].ant = new Short_thrower();
-        cout << "Added Short Thrower Ant" << endl;
-        this->food -= 3;
-    }
-    else {cout << "Not enough food.";}
-}
-void Game::placeWall(int location) {
-    if ((this->food - 4) >= 0) {
-        gameBoard[location].ant = new Wall();
-        cout << "Added Wall Ant" << endl;
-        this->food -= 4;
-    }
-    else {cout << "Not enough food.";}
-}
-void Game::placeNinja(int location) {
-    if ((this->food - 6) >= 0) {
-        gameBoard[location].ant = new Ninja();
-        cout << "Added Ninja Ant" << endl;
-        this->food -= 6;
-    }
-    else {cout << "Not enough food.";}
-}
-void Game::placeBodyguard(int location) {
-    if ((this->food - 4) >= 0) {
-        gameBoard[location].bodyguard = new Bodyguard();
-        cout << "Added Body Guard Ant" << endl;
-        this->food -= 4;
+        this->food -= harvester->foodCost;
     }
     else {cout << "Not enough food.";}
 }
 
+/*** Place a thrower ant on the game board
+ *
+ * @param location - int - the location on the game board to place the ant
+ */
+void Game::placeThrower(int location) {
+	Thrower *thrower = new Thrower();
+    if ((this->food - thrower->foodCost) >= 0) {
+        gameBoard[location].ant = thrower;
+        cout << "Added Thrower Ant" << endl;
+        this->food -= thrower->foodCost;
+    }
+    else {cout << "Not enough food.";}
+}
+
+/*** Place a fire ant on the game board
+ *
+ * @param location - int - the location on the game board to place the ant
+ */
+void Game::placeFire(int location) {
+	Fire *fire = new Fire();
+    if ((this->food - fire->foodCost) >= 0) {
+        gameBoard[location].ant = fire;
+        cout << "Added Fire Ant" << endl;
+        this->food -= fire->foodCost;
+    }
+    else {cout << "Not enough food.";}
+}
+
+/*** Place a long thrower ant on the game board
+ *
+ * @param location - int - the location on the game board to place the ant
+ */
+void Game::placeLongThrower(int location) {
+	Long_thrower *longThrower = new Long_thrower();
+    if ((this->food - longThrower->foodCost) >= 0) {
+        gameBoard[location].ant = longThrower;
+        cout << "Added Long Thrower Ant" << endl;
+        this->food -= longThrower->foodCost;
+    }
+    else {cout << "Not enough food.";}
+}
+
+/*** Place a short thrower ant on the game board
+ *
+ * @param location - int - the location on the game board to place the ant
+ */
+void Game::placeShortThrower(int location) {
+	Short_thrower *shortThrower = new Short_thrower();
+    if ((this->food - shortThrower->foodCost) >= 0) {
+        gameBoard[location].ant = shortThrower;
+        cout << "Added Short Thrower Ant" << endl;
+        this->food -= shortThrower->foodCost;
+    }
+    else {cout << "Not enough food.";}
+}
+
+/*** Place a wall ant on the game board
+ *
+ * @param location - int - the location on the game board to place the ant
+ */
+void Game::placeWall(int location) {
+	Wall *wall = new Wall();
+    if ((this->food - wall->foodCost) >= 0) {
+        gameBoard[location].ant = wall;
+        cout << "Added Wall Ant" << endl;
+        this->food -= wall->foodCost;
+    }
+    else {cout << "Not enough food.";}
+}
+
+/*** Place a ninja ant on the game board
+ *
+ * @param location - int - the location on the game board to place the ant
+ */
+void Game::placeNinja(int location) {
+	Ninja *ninja = new Ninja();
+    if ((this->food - ninja->foodCost) >= 0) {
+        gameBoard[location].ant = ninja;
+        cout << "Added Ninja Ant" << endl;
+        this->food -= ninja->foodCost;
+    }
+    else {cout << "Not enough food.";}
+}
+
+/*** Place a bodygaurd ant on the game board
+ *
+ * @param location - int - the location on the game board to place the ant
+ */
+void Game::placeBodyguard(int location) {
+	Bodyguard *bodyguard = new Bodyguard();
+    if ((this->food - bodyguard->foodCost) >= 0) {
+        gameBoard[location].bodyguard = bodyguard;
+        cout << "Added Body Guard Ant" << endl;
+        this->food -= bodyguard->foodCost;
+    }
+    else {cout << "Not enough food.";}
+}
+
+/*** Perform all the ant attack on bees if applicable
+ *  (depends on type of ant)
+ */
 void Game::antAttack() {
     for(int i = 1; i < gameBoard.size(); i++) {
         if (gameBoard[i].ant == NULL) continue;
@@ -184,10 +238,14 @@ void Game::antAttack() {
         if (antName.compare("Harvester") == 0) {this->food++;}
         else if (antName.compare("Thrower") == 0) {this->doThrower(i);}
         else if (antName.compare("Long Thrower") == 0) {this->doLongThrower(i);}
-        else if (antName.compare("Short Thrower") == 0) {}
+        else if (antName.compare("Short Thrower") == 0) {this->doShortThrower(i);}
     }
 }
 
+/*** Perform the thrower ant's attack
+ *  (any bee sharing the same square as ant)
+ * @param location - int - location of the thrower on the game board
+ */
 void Game::doThrower(int location) {
     // If there are bees damage the 1st bee.
     if (!gameBoard[location].bees->empty()) {
@@ -198,6 +256,10 @@ void Game::doThrower(int location) {
     }
 }
 
+/*** Perform the long thrower ant's attack
+ * (the closest bee to any but at least 4 squares away)
+ * @param location - int - location of the long thrower ant on the game board
+ */
 void Game::doLongThrower(int location) {
     // Initialize 'minDist', 'distFromLoc' to max.
     int minDist = INT_MAX;
@@ -260,8 +322,37 @@ void Game::doLongThrower(int location) {
     cout << "Long at " << location << " closest " << minDist;
 }
 
-void Game::doShortThrower(int location) {}
+/*** perform the short thrower ant's attack
+ * (any bee that is 0-2 squares away from ant)
+ * @param location - int - location of the ant on the game board
+ */
+void Game::doShortThrower(int location) {
+	int higher = location + 2;
+	if (higher >= gameBoard.size()) higher = gameBoard.size()-1;
+	bool foundABee = false;
 
+	for(int i = location; i <= higher; i++){
+
+		if(!gameBoard[i].bees->empty()) foundABee = true;
+		// attack bees in current location
+		for(int j = 0; j < gameBoard[i].bees->size(); j++){
+			gameBoard[i].bees->at(j)->damaged(1);
+		}
+		// delete all bees that died
+		for(int j = 0; j < gameBoard[i].bees->size(); j++){
+			if (gameBoard[i].bees->at(j)->isDead) {
+				gameBoard[i].bees->erase(gameBoard[i].bees->begin()+j);
+				j--;
+			}
+		}
+
+		if(foundABee) break;
+	}
+}
+
+/*** perform the bees action, either attack or move
+ *  (most action handled in processBeesInBoard(int) method
+ */
 void Game::beesAttack() {
     // Go through the game board.
     for(int i = 1; i < gameBoard.size(); i++){
@@ -270,6 +361,11 @@ void Game::beesAttack() {
         processBeesInBoard(i);
     }
 }
+
+/*** process all the bees at a certain location in the board
+ *
+ * @param board - int - the location on the board to process the bees action
+ */
 void Game::processBeesInBoard(int board) {
     for(int j = 0; j < gameBoard[board].bees->size(); j++) {
         // If there's a bodyguard, bee attack it first.
@@ -311,34 +407,55 @@ void Game::processBeesInBoard(int board) {
     }
 }
 
-
+/*** Generate a new bee at the right end of the game board
+ *
+ */
 void Game::generateBee() {
     this->gameBoard.at(gameBoard.size()-1).bees->push_back(new Bee());
 }
 
+
+/*** Print the status of the game board,
+ * ants in square and health, bees in sqaure and health
+ */
 void Game::printGameBoard() {
     cout << "\nTurn #" << this->turn_counter << "  Food: " << this->food << endl;
+    cout << "QUEEN ANT" << endl;
     for(int i = 1; i < gameBoard.size(); i++){
         cout << "Square " << i;
         if(gameBoard[i].ant != NULL){
-            cout << " " <<gameBoard[i].ant->name <<" Ant, Health:  " << gameBoard[i].ant->armor << ", DEade? " << gameBoard[i].ant->isDead;
+            cout << " [" <<gameBoard[i].ant->name <<" Ant, Health: " << gameBoard[i].ant->armor <<"]";
+        }
+
+        if(gameBoard[i].bodyguard != NULL){
+        	cout << ", [Bodygaurd Ant, Health: " << gameBoard[i].bodyguard->armor << "]";
         }
 
         if(!gameBoard.at(i).bees->empty()) {
-            cout << " BEES" << gameBoard[i].bees->front()->armor << " #" << gameBoard[i].bees->size();
+        	for(int j = 0; j < gameBoard[i].bees->size(); j++){
+        		cout << ", [BEE, Health: " << gameBoard[i].bees->at(j)->armor << "]";
+        	}
+
         }
         cout << endl;
     }
 }
 
+/** Check if the "Queen" ant is dead
+ *
+ * @return true if bees have reached the queen ant, false if otherwise
+ */
 bool Game::queenDead() {
     if(!gameBoard[0].bees->empty()){
         return true;
     }
-
     return false;
 }
 
+/*** Counts all bees on the game board
+ *
+ * @return int - the number of bees on the game board
+ */
 int Game::checkBeeCount() {
     int beeCount = 0;
 
@@ -351,10 +468,14 @@ int Game::checkBeeCount() {
     return beeCount;
 }
 
+/*** prints the text menu,
+ * giving user option to place ant, or end current turn
+ * @return - int - the option user has chosen
+ */
 int Game::menu() {
     cout << "\n1. End turn" << endl;
     cout << "2. Place ant." << endl;
-    cout << "Hit Enter to confirm selection. Select:";
+    cout << "Hit Enter to confirm selection. Select: ";
 
     string choice;
     getline(cin, choice);
@@ -368,13 +489,17 @@ int Game::menu() {
     return option;
 }
 
+/*** prints all ant options for user to pick from
+ *
+ * @return int - the option user has chosen
+ */
 int Game::pickAnt() {
     cout << "\nPlacing ant. Which ant?" << endl;
     cout << "1. Harvester       5. Short Thrower" << endl;
     cout << "2. Thrower         6. Wall" << endl;
     cout << "3. Fire            7. Ninja" << endl;
     cout << "4. Long Thrower    8. Bodyguard" << endl;
-    cout << "Hit Enter to confirm selection. Select:";
+    cout << "Hit Enter to confirm selection. Select: ";
 
     string choice;
     getline(cin, choice);
@@ -388,9 +513,12 @@ int Game::pickAnt() {
     return option;
 }
 
-
+/*** prompts user for a location on which to place their ant choice
+ *
+ * @param antChoice - int - the type of ant user has chosen
+ * @return int - the location which user has decided to place an ant
+ */
 // This function is > 20 lines to make it more readable.
-// There's a shorter version of the same function right below this.
 int Game::pickAntLocation(int antChoice) {
     cout << "Pick a square [1-10]" << endl;
     cout << "Hit Enter to confirm selection. Select:";
@@ -420,26 +548,4 @@ int Game::pickAntLocation(int antChoice) {
 
     return position;
 }
-// The 'pickAntLocation' function, short version.
-//int Game::pickAntLocation(int antChoice) {
-//    cout << "Pick a square [1-10]" << endl;
-//    cout << "Hit Enter to confirm selection. Select:";
-//    string choice;
-//    getline(cin, choice);
-//
-//    int position = stoi(choice);
-//
-//    while ((position < 1 || position > 10) || (antChoice != 8 && gameBoard[position].ant != NULL) || (antChoice == 8 && gameBoard[position].bodyguard != NULL)) {
-//        cout << "Bad placement." << endl;
-//        if ((position < 1 || position > 10)) {cout << "That's outside the board." << endl;}
-//        if ((antChoice != 8 && gameBoard[position].ant != NULL)) {cout << "There's already an Ant there." << endl;}
-//        if ((antChoice == 8 && gameBoard[position].bodyguard != NULL)) {cout << "There's already a bodyguard there." << endl;}
-//
-//        cout << "Pick a square [1-10]" << endl;
-//        cout << "Hit Enter to confirm selection. Select:";
-//        getline(cin, choice);
-//        position = stoi(choice);
-//    }
-//
-//    return position;
-//}
+

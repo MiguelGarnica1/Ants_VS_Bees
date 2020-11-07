@@ -65,9 +65,9 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="ants_v_bees" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ants_v_bees" TARGET_NAME="ants_v_bees" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ants_v_bees" RUN_TARGET_NAME="ants_v_bees">
@@ -91,6 +91,7 @@
       <updated>1604381255512</updated>
       <workItem from="1604381258715" duration="9000" />
       <workItem from="1604381620213" duration="8153000" />
+      <workItem from="1604701403477" duration="7419000" />
     </task>
     <servers />
   </component>
@@ -107,40 +108,45 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="388" key="GridCell.Tab.0.bottom" timestamp="1604517609913">
+    <state width="1877" height="268" key="GridCell.Tab.0.bottom" timestamp="1604709275752">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="388" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604517609913" />
-    <state width="1877" height="388" key="GridCell.Tab.0.center" timestamp="1604517609913">
+    <state width="1877" height="268" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604709275752" />
+    <state width="1877" height="268" key="GridCell.Tab.0.center" timestamp="1604709275751">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="388" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604517609913" />
-    <state width="1877" height="388" key="GridCell.Tab.0.left" timestamp="1604517609913">
+    <state width="1877" height="268" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604709275751" />
+    <state width="1877" height="268" key="GridCell.Tab.0.left" timestamp="1604709275751">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="388" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604517609913" />
-    <state width="1877" height="388" key="GridCell.Tab.0.right" timestamp="1604517609913">
+    <state width="1877" height="268" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604709275751" />
+    <state width="1877" height="268" key="GridCell.Tab.0.right" timestamp="1604709275751">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="388" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604517609913" />
-    <state width="1877" height="207" key="GridCell.Tab.1.bottom" timestamp="1604517232504">
+    <state width="1877" height="268" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604709275751" />
+    <state width="1877" height="207" key="GridCell.Tab.1.bottom" timestamp="1604529085420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="207" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604517232504" />
-    <state width="1877" height="207" key="GridCell.Tab.1.center" timestamp="1604517232504">
+    <state width="1877" height="207" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604529085420" />
+    <state width="1877" height="207" key="GridCell.Tab.1.center" timestamp="1604529085420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="207" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604517232504" />
-    <state width="1877" height="207" key="GridCell.Tab.1.left" timestamp="1604517232504">
+    <state width="1877" height="207" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604529085420" />
+    <state width="1877" height="207" key="GridCell.Tab.1.left" timestamp="1604529085420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="207" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604517232504" />
-    <state width="1877" height="207" key="GridCell.Tab.1.right" timestamp="1604517232504">
+    <state width="1877" height="207" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604529085420" />
+    <state width="1877" height="207" key="GridCell.Tab.1.right" timestamp="1604529085420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="207" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604517232504" />
+    <state width="1877" height="207" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604529085420" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1604707232808">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604707232808" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
