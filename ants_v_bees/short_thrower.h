@@ -16,19 +16,7 @@ public:
 
     // destructor
     ~Short_thrower();
-
-    // attack a bee
-    void attack(Insect &other);
-
-    // get damaged
-    void damaged(int damage);
-
-    // move
-    void move();
-
-    /***
-     * fields
-     */
+    
 };
 
 

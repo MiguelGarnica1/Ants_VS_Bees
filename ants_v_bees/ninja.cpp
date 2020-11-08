@@ -4,11 +4,15 @@
 
 #include "ninja.h"
 
+/*** constructor
+ * creates a new Ninja ant
+ */
 Ninja::Ninja() {
     this->name = "Ninja";
     this->foodCost = 6;
 }
 
-Ninja::~Ninja() {
-
-}
+/*** destructor
+ * all fields are primitive
+ */
+Ninja::~Ninja() {}

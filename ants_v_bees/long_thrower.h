@@ -19,7 +19,6 @@ public:
 	// destructor
 	~Long_thrower();
 
-
 };
 
 

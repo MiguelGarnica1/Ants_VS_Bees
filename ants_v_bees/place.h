@@ -23,10 +23,12 @@ public:
 	// destructor
 	~Place();
 
+	/***
+	 * fields
+	 */
 	Ant *ant;
 	Bodyguard *bodyguard;
 	vector<Bee*> *bees;
-	int location;
 };
 
 

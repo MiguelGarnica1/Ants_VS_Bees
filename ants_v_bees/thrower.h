@@ -17,8 +17,6 @@ public:
 
 	// destructor
 	~Thrower();
-
-
 };
 
 

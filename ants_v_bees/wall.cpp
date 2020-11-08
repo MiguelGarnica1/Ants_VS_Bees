@@ -4,12 +4,16 @@
 
 #include "wall.h"
 
+/*** constructor
+ * create a new Wall ant
+ */
 Wall::Wall() {
     this->name = "Wall";
     this->armor = 4;
     this->foodCost = 4;
 }
 
-Wall::~Wall() {
-
-}
+/*** destructor
+ * all fields are primitive
+ */
+Wall::~Wall() {}

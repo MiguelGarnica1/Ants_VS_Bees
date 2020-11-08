@@ -22,12 +22,6 @@ public:
 	// destructor
 	~Ant();
 
-	// attack a bee
-	void attack(Insect &other);
-
-	// move
-	void move();
-
 	/***
 	 * fields
 	 */

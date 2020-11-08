@@ -14,7 +14,6 @@ class Insect {
 public:
 	// constructor
     Insect();
-	Insect(string newName, int newArmor, int newLocation);
 
 	// copy constructor
 	Insect(Insect &orig);
@@ -25,16 +24,8 @@ public:
 	// destructor
 	~Insect();
 
-
-	// attack other insect
-	void attack(Insect &other);
-
 	// get damaged
 	void damaged(int damage);
-
-	// make move
-	void move();
-
 
 	/***
 	 * fields

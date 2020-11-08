@@ -31,7 +31,26 @@
   <component name="ChangeListManager">
     <list default="true" id="bc5ee574-db46-455c-82d8-073873312f72" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/game.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ant.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ant.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ant.h" beforeDir="false" afterPath="$PROJECT_DIR$/ant.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bee.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/bee.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bee.h" beforeDir="false" afterPath="$PROJECT_DIR$/bee.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bodyguard.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/bodyguard.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fire.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/fire.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/harvester.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/harvester.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/insect.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/insect.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/insect.h" beforeDir="false" afterPath="$PROJECT_DIR$/insect.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/long_thrower.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/long_thrower.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/long_thrower.h" beforeDir="false" afterPath="$PROJECT_DIR$/long_thrower.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ninja.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ninja.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/place.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/place.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/place.h" beforeDir="false" afterPath="$PROJECT_DIR$/place.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/short_thrower.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/short_thrower.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/short_thrower.h" beforeDir="false" afterPath="$PROJECT_DIR$/short_thrower.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thrower.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/thrower.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thrower.h" beforeDir="false" afterPath="$PROJECT_DIR$/thrower.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wall.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/wall.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +110,7 @@
       <updated>1604381255512</updated>
       <workItem from="1604381258715" duration="9000" />
       <workItem from="1604381620213" duration="8153000" />
-      <workItem from="1604701403477" duration="7419000" />
+      <workItem from="1604701403477" duration="11167000" />
     </task>
     <servers />
   </component>
@@ -111,22 +130,22 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="268" key="GridCell.Tab.0.bottom" timestamp="1604709275752">
+    <state width="1877" height="2" key="GridCell.Tab.0.bottom" timestamp="1604800996187">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="268" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604709275752" />
-    <state width="1877" height="268" key="GridCell.Tab.0.center" timestamp="1604709275751">
+    <state width="1877" height="2" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604800996187" />
+    <state width="1877" height="2" key="GridCell.Tab.0.center" timestamp="1604800996187">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="268" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604709275751" />
-    <state width="1877" height="268" key="GridCell.Tab.0.left" timestamp="1604709275751">
+    <state width="1877" height="2" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604800996187" />
+    <state width="1877" height="2" key="GridCell.Tab.0.left" timestamp="1604800996187">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="268" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604709275751" />
-    <state width="1877" height="268" key="GridCell.Tab.0.right" timestamp="1604709275751">
+    <state width="1877" height="2" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604800996187" />
+    <state width="1877" height="2" key="GridCell.Tab.0.right" timestamp="1604800996187">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="268" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604709275751" />
+    <state width="1877" height="2" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604800996187" />
     <state width="1877" height="207" key="GridCell.Tab.1.bottom" timestamp="1604529085420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -143,21 +162,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="207" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604529085420" />
+    <state x="0" y="0" width="1598" height="997" key="dock-window-1" timestamp="1604799139401">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="0" y="0" width="1598" height="997" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1604799139401" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1604707232808">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604707232808" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/bee.h</url>
-          <line>11</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="this-&gt;isDead = true;" language="ObjectiveC" />
