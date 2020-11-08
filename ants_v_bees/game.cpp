@@ -342,26 +342,39 @@ void Game::doLongThrower(int location) {
  * @param location - int - location of the ant on the game board
  */
 void Game::doShortThrower(int location) {
-	int higher = location + 2;
-	if (higher >= gameBoard.size()) higher = gameBoard.size()-1;
-	bool foundABee = false;
+	// Initialize 'minDist', 'distFromLoc' to max.
+	int minDist = INT_MAX;
+	int distFromLoc = INT_MAX;
 
-	for(int i = location; i <= higher; i++){
+	// Trying to go through the game board to find good target.
+	for (int i = 1; i < gameBoard.size(); i++) {
+		// Valid target must be less than 2 squares away
+		if (abs(i - location) > 2) continue;
 
-		if(!gameBoard[i].bees->empty()) foundABee = true;
-		// attack bees in current location
-		for(int j = 0; j < gameBoard[i].bees->size(); j++){
-			gameBoard[i].bees->at(j)->damaged(1);
+		// Find the distance to the closest valid bee target.
+		if (!gameBoard[i].bees->empty()) {
+			distFromLoc = abs(i - location);
+			if (distFromLoc < minDist) {minDist = distFromLoc;}
 		}
-		// delete all bees that died
-		for(int j = 0; j < gameBoard[i].bees->size(); j++){
-			if (gameBoard[i].bees->at(j)->isDead) {
-				gameBoard[i].bees->erase(gameBoard[i].bees->begin()+j);
-				j--;
-			}
+	}
+
+	// ASSUMPTION: Long Thrower hurts each bee which is closest to it, but at least 4 squares
+	// away. So if  there are bees to the left and right of Long Thrower, and the bees are at
+	// same minimum distance (and at least 4 squares away) from the Long Thrower, bees from
+	// both places takes damage.
+
+	// If 'minDist' is changed, then a valid target was found.
+	if (minDist != INT_MAX) {
+		// Handles closest bees to left (same 'minDist' as right) if valid.
+		if ((location - minDist) >= 1) {
+			damageAllBeesAt(location - minDist,1);
 		}
 
-		if(foundABee) break;
+		// Handles closest bees to right, that are at the same distance as the closest bees
+		// to the left, if valid.
+		if ((location + minDist) <= 10) {
+			damageAllBeesAt(location + minDist,1);
+		}
 	}
 }
 
