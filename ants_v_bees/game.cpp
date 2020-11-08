@@ -51,6 +51,19 @@ void Game::gameLoop() {
 
         // 1) A bee is generated on the right side of the board
         generateBee();
+//        for (int i = 0; i < 99999999; i++) {
+//            generateBee();
+//            for(int j = 0; j < gameBoard[10].bees->size(); j++) {
+//                // delete moved/dead bee, cannot use number to erase
+//                delete (gameBoard[10].bees->at(j));
+//                gameBoard[10].bees->erase(gameBoard[10].bees->begin() + j);
+//                // 'Bee' erased from vector. Other 'Bee's in vector is shifted.
+//                // Take into account this shift by offsetting 'j' counter.
+//                j--;
+//            }
+//        }
+
+
         printGameBoard();
 
         // 2) The player can generate an ant and place it anywhere on the board if food count permits.
@@ -124,7 +137,10 @@ void Game::placeHarvester(int location) {
         cout << "Added Harvester Ant" << endl;
         this->food -= harvester->foodCost;
     }
-    else {cout << "Not enough food.";}
+    else {
+        cout << "Not enough food.";
+        delete harvester;
+    }
 }
 
 /*** Place a thrower ant on the game board
@@ -138,7 +154,10 @@ void Game::placeThrower(int location) {
         cout << "Added Thrower Ant" << endl;
         this->food -= thrower->foodCost;
     }
-    else {cout << "Not enough food.";}
+    else {
+        cout << "Not enough food.";
+        delete thrower;
+    }
 }
 
 /*** Place a fire ant on the game board
@@ -152,7 +171,10 @@ void Game::placeFire(int location) {
         cout << "Added Fire Ant" << endl;
         this->food -= fire->foodCost;
     }
-    else {cout << "Not enough food.";}
+    else {
+        cout << "Not enough food.";
+        delete fire;
+    }
 }
 
 /*** Place a long thrower ant on the game board
@@ -166,7 +188,10 @@ void Game::placeLongThrower(int location) {
         cout << "Added Long Thrower Ant" << endl;
         this->food -= longThrower->foodCost;
     }
-    else {cout << "Not enough food.";}
+    else {
+        cout << "Not enough food.";
+        delete longThrower;
+    }
 }
 
 /*** Place a short thrower ant on the game board
@@ -180,7 +205,10 @@ void Game::placeShortThrower(int location) {
         cout << "Added Short Thrower Ant" << endl;
         this->food -= shortThrower->foodCost;
     }
-    else {cout << "Not enough food.";}
+    else {
+        cout << "Not enough food.";
+        delete shortThrower;
+    }
 }
 
 /*** Place a wall ant on the game board
@@ -194,7 +222,10 @@ void Game::placeWall(int location) {
         cout << "Added Wall Ant" << endl;
         this->food -= wall->foodCost;
     }
-    else {cout << "Not enough food.";}
+    else {
+        cout << "Not enough food.";
+        delete wall;
+    }
 }
 
 /*** Place a ninja ant on the game board
@@ -208,7 +239,10 @@ void Game::placeNinja(int location) {
         cout << "Added Ninja Ant" << endl;
         this->food -= ninja->foodCost;
     }
-    else {cout << "Not enough food.";}
+    else {
+        cout << "Not enough food.";
+        delete ninja;
+    }
 }
 
 /*** Place a bodygaurd ant on the game board
@@ -222,7 +256,10 @@ void Game::placeBodyguard(int location) {
         cout << "Added Body Guard Ant" << endl;
         this->food -= bodyguard->foodCost;
     }
-    else {cout << "Not enough food.";}
+    else {
+        cout << "Not enough food.";
+        delete bodyguard;
+    }
 }
 
 /*** Perform all the ant attack on bees if applicable
@@ -250,7 +287,10 @@ void Game::doThrower(int location) {
     // If there are bees damage the 1st bee.
     if (!gameBoard[location].bees->empty()) {
         gameBoard[location].bees->front()->damaged(1);
+
+        // Remove bee if it is dead.
         if (gameBoard[location].bees->front()->isDead) {
+            delete  gameBoard[location].bees->at(0);
             gameBoard[location].bees->erase(gameBoard[location].bees->begin());
         }
     }
@@ -269,57 +309,32 @@ void Game::doLongThrower(int location) {
     for (int i = 1; i < gameBoard.size(); i++) {
         // Valid target must be at least 4 squares away.
         if (abs(i - location) < 4) continue;
+
         // Find the distance to the closest valid bee target.
         if (!gameBoard[i].bees->empty()) {
             distFromLoc = abs(i - location);
-            if (distFromLoc < minDist)
-                minDist = distFromLoc;
+            if (distFromLoc < minDist) {minDist = distFromLoc;}
         }
     }
+
+    // ASSUMPTION: Long Thrower hurts each bee which is closest to it, but at least 4 squares
+    // away. So if  there are bees to the left and right of Long Thrower, and the bees are at
+    // same minimum distance (and at least 4 squares away) from the Long Thrower, bees from
+    // both places takes damage.
 
     // If 'minDist' is changed, then a valid target was found.
     if (minDist != INT_MAX) {
-        // Long Thrower hurts each bee which is closest to it, but at least 4 squares away.
         // Handles closest bees to left (same 'minDist' as right) if valid.
         if ((location - minDist) >= 1) {
-            int leftTarget = location - minDist;
-            for (int j = 0; j < gameBoard[leftTarget].bees->size(); j++) {
-                // If there are bees left.
-                if (!gameBoard[leftTarget].bees->empty()) {
-                    // Damage each bees.
-                    gameBoard[leftTarget].bees->front()->damaged(1);
-                    // If bee dead.
-                    if (gameBoard[leftTarget].bees->front()->isDead) {
-                        // 'Bee' erased from vector. Other 'Bee's in vector is shifted.
-                        // Take into account this shift by offsetting 'j' counter.
-                        gameBoard[leftTarget].bees->erase(gameBoard[leftTarget].bees->begin());
-                        j--;
-                    }
-                }
-            }
+            damageAllBeesAt(location - minDist,1);
         }
-        // Handles closest bees to right (same 'minDist' as left) if valid.
+
+        // Handles closest bees to right, that are at the same distance as the closest bees
+        // to the left, if valid.
         if ((location + minDist) <= 10) {
-            int rightTarget = location + minDist;
-            for (int j = 0; j < gameBoard[rightTarget].bees->size(); j++) {
-                // If there are bees left.
-                if (!gameBoard[rightTarget].bees->empty()) {
-                    // Damage each bees.
-                    gameBoard[rightTarget].bees->front()->damaged(1);
-                    // If bee dead.
-                    if (gameBoard[rightTarget].bees->front()->isDead) {
-                        // 'Bee' erased from vector. Other 'Bee's in vector is shifted.
-                        // Take into account this shift by offsetting 'j' counter.
-                        gameBoard[rightTarget].bees->erase(gameBoard[rightTarget].bees->begin());
-                        j--;
-                    }
-                }
-            }
+            damageAllBeesAt(location + minDist,1);
         }
     }
-
-
-    cout << "Long at " << location << " closest " << minDist;
 }
 
 /*** perform the short thrower ant's attack
@@ -350,6 +365,31 @@ void Game::doShortThrower(int location) {
 	}
 }
 
+/***
+ * Damage all bees at a location by a value. Remove dead bees if needed.
+ * @param location - int - location of the ant on the game board
+ * @param damVal - int - damage value the bees will take
+ */
+void Game::damageAllBeesAt(int location, int damVal) {
+    if (!gameBoard[location].bees->empty()) {
+        // Go through the bees at location.
+        for(int i = 0; i < gameBoard[location].bees->size(); i++) {
+            // Damaging the bees.
+            gameBoard[location].bees->at(i)->damaged(damVal);
+
+            if (gameBoard[location].bees->at(i)->isDead) {
+                // Delete dead bees, cannot use number to erase.
+                delete gameBoard[location].bees->at(i);
+                gameBoard[location].bees->erase(gameBoard[location].bees->begin()+i);
+
+                // 'Bee' erased from vector. Other 'Bee's in vector is shifted.
+                // Take into account this shift by offsetting 'j' counter.
+                i--;
+            }
+        }
+    }
+}
+
 /*** perform the bees action, either attack or move
  *  (most action handled in processBeesInBoard(int) method
  */
@@ -376,18 +416,18 @@ void Game::processBeesInBoard(int board) {
                 gameBoard[board].bodyguard = NULL; /// REMEMBER TO DELETE
             }
         }
-            // If there's an non-Ninja ant, bee attack.
+        // If there's an non-Ninja ant, bee attack.
         else if (gameBoard[board].ant != NULL && (gameBoard[board].ant->name.compare("Ninja") != 0)) {
             gameBoard[board].ant->damaged(1);
             // When ant is killed.
             if(gameBoard[board].ant->isDead) {
                 // If ant killed is "Fire" ant, kill all bees.
-                if (gameBoard[board].ant->name.compare("Fire") == 0) {gameBoard[board].bees->clear();}
+                if (gameBoard[board].ant->name.compare("Fire") == 0) { damageAllBeesAt(board, 3); }
                 delete gameBoard[board].ant;
                 gameBoard[board].ant = NULL; /// REMEMBER TO DELETE
             }
         }
-            // Bee moving.
+        // Bee moving.
         else {
             // If there's Ninja ant, bee at j take damage.
             if (gameBoard[board].ant != NULL && (gameBoard[board].ant->name.compare("Ninja") == 0)) {
@@ -436,6 +476,7 @@ void Game::printGameBoard() {
         		cout << ", [BEE, Health: " << gameBoard[i].bees->at(j)->armor << "]";
         	}
 
+//        	cout << " " << gameBoard.at(i).bees->size();
         }
         cout << endl;
     }

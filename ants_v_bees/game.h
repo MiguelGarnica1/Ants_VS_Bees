@@ -41,6 +41,7 @@ public:
     void doThrower(int location);
     void doLongThrower(int location);
     void doShortThrower(int location);
+    void damageAllBeesAt(int location, int damVal);
 
     void beesAttack();
     void processBeesInBoard(int boardLocation);
