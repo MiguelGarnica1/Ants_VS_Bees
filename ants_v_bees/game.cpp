@@ -34,7 +34,6 @@ Game::Game()  {
 
     // initialize 'food' to 50 starting food.
     this->food = 50;
-
 }
 
 /***
@@ -439,6 +438,7 @@ void Game::processBeesInBoard(int board) {
                 gameBoard[board-1].bees->push_back(gameBoard[board].bees->at(j));
             }
             // delete moved/dead bee, cannot use number to erase
+            delete gameBoard[board].bees->at(j);
             gameBoard[board].bees->erase(gameBoard[board].bees->begin() + j);
             // 'Bee' erased from vector. Other 'Bee's in vector is shifted.
             // Take into account this shift by offsetting 'j' counter.
@@ -446,6 +446,8 @@ void Game::processBeesInBoard(int board) {
         }
     }
 }
+
+
 
 /*** Generate a new bee at the right end of the game board
  *
@@ -589,4 +591,3 @@ int Game::pickAntLocation(int antChoice) {
 
     return position;
 }
-

@@ -20,5 +20,8 @@ Place::Place() {
 Place::~Place() {
 	delete ant;
 	delete bodyguard;
+
+    for ( int i = 0; i < bees->size(); i++ ) { delete bees->at(i); }
+    bees->clear();
 	delete bees;
 }
