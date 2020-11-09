@@ -1,5 +1,5 @@
 //
-// Created by Miguel on 11/2/2020.
+// Created by Miguel Garnica and Ky Phan on  11/2/2020.
 //
 
 #include <iostream>
@@ -50,19 +50,6 @@ void Game::gameLoop() {
 
         // 1) A bee is generated on the right side of the board
         generateBee();
-//        for (int i = 0; i < 99999999; i++) {
-//            generateBee();
-//            for(int j = 0; j < gameBoard[10].bees->size(); j++) {
-//                // delete moved/dead bee, cannot use number to erase
-//                delete (gameBoard[10].bees->at(j));
-//                gameBoard[10].bees->erase(gameBoard[10].bees->begin() + j);
-//                // 'Bee' erased from vector. Other 'Bee's in vector is shifted.
-//                // Take into account this shift by offsetting 'j' counter.
-//                j--;
-//            }
-//        }
-
-
         printGameBoard();
 
         // 2) The player can generate an ant and place it anywhere on the board if food count permits.
@@ -71,15 +58,12 @@ void Game::gameLoop() {
         if (option == 2) {this->placeAnt();}
 
         // 3) The ants attack the bees. (Order of ant attacks occur left to right)
-
         antAttack();
-
 
         /**
         * 4) The bees either attack an ant (order of attack is left to right) which is blocking
         * them or pass through to the next square on the board if they are not blocked by an ant
         */
-
         beesAttack();
 
         /**
@@ -451,7 +435,7 @@ void Game::processBeesInBoard(int board) {
                 gameBoard[board-1].bees->push_back(gameBoard[board].bees->at(j));
             }
             // delete moved/dead bee, cannot use number to erase
-            delete gameBoard[board].bees->at(j);
+            //delete gameBoard[board].bees->at(j);
             gameBoard[board].bees->erase(gameBoard[board].bees->begin() + j);
             // 'Bee' erased from vector. Other 'Bee's in vector is shifted.
             // Take into account this shift by offsetting 'j' counter.
@@ -490,8 +474,6 @@ void Game::printGameBoard() {
         	for(int j = 0; j < gameBoard[i].bees->size(); j++){
         		cout << ", [BEE, Health: " << gameBoard[i].bees->at(j)->armor << "]";
         	}
-
-//        	cout << " " << gameBoard.at(i).bees->size();
         }
         cout << endl;
     }

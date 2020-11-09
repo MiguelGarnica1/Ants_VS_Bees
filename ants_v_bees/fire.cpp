@@ -1,5 +1,5 @@
 //
-// Created by Miguel on 11/3/2020.
+// Created by Miguel Garnica and Ky Phan on  11/3/2020.
 //
 
 #include "fire.h"
